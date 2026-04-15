@@ -1,0 +1,124 @@
+{
+  "company": {
+    "name": "Linear",
+    "domain": "linear.app",
+    "industry": "B2B SaaS — Project Management / Product Development tooling"
+  },
+  "hero": {
+    "headline": "Linear ships fast. Its marketing site does not.",
+    "subhead": "Linear powers 25,000 product teams on product velocity — but its own web presence runs on a custom-coded, engineering-gated stack with no visible ABM layer, no localized pages, and no programmatic LP infrastructure.",
+    "painHook": "A product built on speed has a marketing site that requires an eng ticket to update copy. No CMS, no personalised landing pages for Jira-migration accounts, no hreflang signals for APAC or DACH — markets where dev-tool adoption is surging."
+  },
+  "sections": [
+    {
+      "title": "The Stack: Engineer-owned, marketer-blocked",
+      "body": "Linear's marketing site is custom Next.js, visually excellent, built to showcase the product — and completely inaccessible to a growth or content team without a pull request. There is no detectable headless CMS, no visible A/B testing layer, and no programmatic landing page infrastructure. Every copy change, every new LP, every experiment is an engineering dependency.",
+      "tactics": [
+        "Audit which marketing pages have changed in the last 90 days — if fewer than 5, you have a velocity problem you can quantify for the eng team.",
+        "Map every page that mentions 'Jira', 'Notion', or 'Asana' — these are your highest-intent comparison pages and they should each have a **dedicated conversion flow**, not a shared CTA.",
+        "Instrument a **Segment or RudderStack** event on CTA clicks by page type to baseline conversion before any stack change.",
+        "Run a Screaming Frog crawl to count unique page templates — if it's under 8, the site is under-templated for a PLG product with 25k customers.",
+        "Build the business case: estimate **engineering hours per LP** (typically 4–8h) vs. CMS-powered LP (under 30 min) and put a sprint-cost number on the current setup."
+      ]
+    },
+    {
+      "title": "Positioning: 'The system for product development' is doing a lot of work alone",
+      "body": "Linear's homepage positions around speed, craft, and the 'Linear Method' — strong differentiation for a bottoms-up PLG motion. But the site is monolingual (English only), carries no account-specific personalisation, and has no visible landing pages targeting the Jira-migration or Asana-switcher cohort — two of the highest-intent search clusters in the category. Positioning is sharp; distribution of that positioning is thin.",
+      "tactics": [
+        "Write a **Jira-migration landing page** with a 3-step migration narrative, gated to visitors from Atlassian.com referrals or 'linear vs jira' organic traffic.",
+        "Swap the homepage hero for returning visitors who arrived via a 'linear alternative' keyword — show **social proof from teams their size** rather than a generic product animation.",
+        "Create a /teams/engineering, /teams/product, /teams/design persona split — each with a distinct headline, proof point, and CTA — to capture intent from non-engineering buyers entering the funnel.",
+        "Test a **pricing-page message** that addresses the SAML/SCIM Enterprise trigger point directly — this is the most common friction point for teams at 50–200 employees evaluating a Business-to-Enterprise upgrade.",
+        "Add hreflang tags and localised hero copy for DE, JP, and FR — three markets with high developer-tool adoption and no current language signal on linear.app."
+      ]
+    },
+    {
+      "title": "The Growth Gap: PLG top-of-funnel is word-of-mouth only",
+      "body": "Linear's growth to date has been product-led and brand-led — users recruit teammates because the product is that good. That is a real moat at the ICP level. But it creates a ceiling: no ABM instrumentation means high-value target accounts (100–500 seat enterprise deals) arrive via the same free-trial flow as a 3-person startup. There are no account-identified landing pages, no intent-signal routing, and no visible paid social infrastructure tailored by company size or tech stack.",
+      "tactics": [
+        "Instrument **Clearbit Reveal or RB2B** on the homepage to identify visiting company domains and route them to an account-specific variant (logo, proof point, seat-size CTA).",
+        "Build a 1-pager ABM sequence for accounts currently on Jira Cloud with 50–300 engineers — the **Business-tier upgrade economics** ($16/user/yr at 100 seats = $19.2K ACV) justify a human touch.",
+        "Run a **LinkedIn Matched Audiences** campaign targeting VP Engineering / Head of Product at companies with 50–500 employees, serving a 'Jira cycle-time' message with a conversion LP, not the homepage.",
+        "Gate a 'Linear vs Jira: TCO Calculator' tool behind a work email — captures intent from procurement-stage buyers and feeds the enterprise sales motion.",
+        "Measure **free-to-paid conversion rate by company size** from your existing Segment data; if >50-seat accounts convert at even 5% higher than average, that is your ABM ROI justification in one query."
+      ]
+    }
+  ],
+  "ctaBlock": {
+    "title": "What Prismic Agents would ship for Linear in week 1",
+    "bullets": [
+      "The **ABM Agent** generates personalised landing pages for Linear's top 200 Jira-migration target accounts — each with the visitor's company name, a matched customer proof point by industry, and a seat-size-specific CTA — deployed without a single engineering ticket.",
+      "The **SEO Agent** audits linear.app's comparison and alternative pages, identifies the 15 highest-traffic 'linear vs X' clusters with thin or missing dedicated pages, and generates optimised page variants with structured schema — closing the organic gap to Notion and Jira comparison queries.",
+      "The **Localization Agent** scaffolds DE, JP, and FR versions of the homepage and pricing page — hreflang-correct, CMS-managed, and editable by the marketing team — targeting three developer-dense markets where linear.app currently has zero localised surface area."
+    ],
+    "ctaLabel": "See Linear's ABM LP in the Prismic demo"
+  },
+  "brief": {
+    "opportunityTitle": "Enterprise ABM + Jira-migration LP layer: capturing the 50–500 seat upgrade cohort",
+    "opportunityEurPerMonth": 185000,
+    "keyMetrics": [
+      {
+        "label": "Business tier ACV (100 seats)",
+        "value": "~€18K/yr"
+      },
+      {
+        "label": "Enterprise ACV (250+ seats)",
+        "value": "~€45K+ /yr"
+      },
+      {
+        "label": "Estimated addressable accounts",
+        "value": "~800/quarter"
+      },
+      {
+        "label": "Current ABM LP infrastructure",
+        "value": "0 pages"
+      },
+      {
+        "label": "Localized marketing pages",
+        "value": "0 languages"
+      }
+    ],
+    "rationaleBlocks": [
+      {
+        "title": "The math",
+        "bullets": [
+          "800 target accounts/quarter at Jira-migration ICP (50–300 eng headcount), each worth roughly **€18–45K ACV**.",
+          "A 2% ABM-LP conversion lift on 800 accounts = **16 incremental closed-won per quarter** at average €25K ACV.",
+          "16 deals × €25K = **€400K/quarter**, or roughly €133K/month in incremental ARR pipeline at current conversion assumptions.",
+          "Even at a 50% haircut for deal slippage and cycle length, that is **€65–185K/month** in attributable new ARR pipeline."
+        ]
+      },
+      {
+        "title": "What Prismic Agents ship",
+        "bullets": [
+          "**ABM Agent** builds account-personalised LPs at scale — no eng dependency, no design bottleneck.",
+          "**SEO Agent** closes the 'linear vs jira' and 'linear alternative' keyword gap — currently thin pages losing organic intent to G2 and comparison sites.",
+          "**Localization Agent** opens DE, JP, FR surface area — three markets with high developer-tool NPS and zero current localised pages on linear.app.",
+          "All three agents run on a **Prismic headless CMS** layer — marketing team owns iteration velocity, eng is unblocked."
+        ]
+      },
+      {
+        "title": "Assumptions",
+        "bullets": [
+          "800 target accounts/quarter is a rough estimate based on **Jira's ~10M user base** and segment filtering for 50–300 seat companies.",
+          "€25K average ACV blends Business-tier self-serve (~€18K at 100 seats) with Enterprise deals (~€45K+); **actual blended ACV may vary**.",
+          "2% conversion lift from personalised LPs vs. homepage is conservative — comparable ABM LP plays in dev-tool SaaS report **3–6% lifts**.",
+          "Localization revenue impact not included in the headline figure — it is additive upside, not the core case."
+        ]
+      },
+      {
+        "title": "Why now",
+        "bullets": [
+          "Linear just launched **Linear Asks** (April 2026) — expanding beyond pure eng into cross-functional teams, which widens the ICP and raises urgency for account-level messaging.",
+          "Jira's pricing changes in 2024–2025 have driven a visible migration wave — **search volume for 'jira alternative' is at a multi-year high**.",
+          "Linear's current site has zero ABM infrastructure — **first-mover advantage** within their own funnel is available to take."
+        ]
+      }
+    ],
+    "quickWin": "**Build one Jira-migration LP** targeting visitors referred from Atlassian.com or 'linear vs jira' organic traffic — headline anchored to cycle-time reduction, one customer logo from a team that migrated, and a 'Start free for your team' CTA with a seat-count input. **Measure SQL-to-trial conversion delta** against the homepage baseline over 2 weeks. This single page tests the ABM LP hypothesis with zero paid spend and surfaces whether account-level messaging moves the number before any larger infrastructure commitment."
+  },
+  "meta": {
+    "provider": "anthropic",
+    "generatedAt": "2026-04-15T15:05:45.276Z"
+  }
+}

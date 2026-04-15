@@ -1,4 +1,5 @@
 import { GenerateForm } from "@/components/generate-form";
+import { ExampleSwitcher } from "@/components/example-switcher";
 import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
@@ -52,16 +53,12 @@ export default function Home() {
           </p>
         </section>
 
-        {/* Pre-baked examples (wired in H3) */}
+        {/* Pre-baked examples */}
         <section className="flex flex-col gap-4">
           <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
             Or see a pre-generated example
           </h2>
-          <div className="flex flex-wrap gap-3">
-            <span className="text-xs text-muted-foreground italic">
-              [examples wired in H3]
-            </span>
-          </div>
+          <ExampleSwitcher />
         </section>
 
         {/* Demo video (wired in H3) */}
