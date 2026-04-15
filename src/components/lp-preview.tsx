@@ -33,7 +33,19 @@ export function LPPreview({ lp }: { lp: LP }) {
   const threeYear = monthly * 36;
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-12">
+      <div className="flex items-center justify-between gap-3 flex-wrap border-b border-border/60 pb-3">
+        <div className="flex items-center gap-2 text-xs uppercase tracking-wider">
+          <span className="w-2 h-2 rounded-full gradient-hero" aria-hidden />
+          <span className="gradient-text font-semibold">
+            Part 1 · Personalised landing page
+          </span>
+        </div>
+        <span className="text-xs text-muted-foreground">
+          What Prismic&rsquo;s ABM Agent would ship for this prospect
+        </span>
+      </div>
+
       <header className="flex flex-col gap-4">
         <div className="flex items-center gap-2 text-xs text-muted-foreground flex-wrap">
           <span className="font-medium text-foreground">{lp.company.name}</span>
@@ -121,15 +133,26 @@ export function LPPreview({ lp }: { lp: LP }) {
         </button>
       </div>
 
-      <div className="rounded-xl border border-border bg-card p-6 flex flex-col gap-6">
-        <div className="flex items-center justify-between flex-wrap gap-2">
-          <span className="text-xs uppercase tracking-wider text-muted-foreground">
-            Mini growth brief
-          </span>
-          <span className="text-xs text-muted-foreground">
-            Directional · not audited
+      <div className="flex items-center justify-between gap-3 flex-wrap border-b border-border/60 pb-3 mt-4">
+        <div className="flex items-center gap-2 text-xs uppercase tracking-wider">
+          <span
+            className="w-2 h-2 rounded-full"
+            style={{ backgroundColor: "#10b981" }}
+            aria-hidden
+          />
+          <span
+            className="font-semibold"
+            style={{ color: "#10b981" }}
+          >
+            Part 2 · Mini growth brief
           </span>
         </div>
+        <span className="text-xs text-muted-foreground">
+          Directional opportunity sizing · not audited
+        </span>
+      </div>
+
+      <div className="rounded-xl border border-border bg-card p-6 flex flex-col gap-6">
 
         <div className="flex flex-col gap-3">
           <h3 className="text-xl font-semibold">{lp.brief.opportunityTitle}</h3>
