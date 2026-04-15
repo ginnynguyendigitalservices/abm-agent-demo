@@ -79,7 +79,7 @@ export default function Home() {
         {/* Closing CTA */}
         <section className="rounded-2xl gradient-border p-[1.5px]">
           <div className="rounded-2xl bg-card p-8 sm:p-10 flex flex-col items-center text-center gap-5">
-            <AvatarChip size={64} />
+            <AvatarChip size={96} />
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight max-w-xl">
               Like what you see?
             </h2>
