@@ -2,6 +2,8 @@ import { NextRequest } from "next/server";
 import { z } from "zod";
 import { runPipeline, PipelineError } from "@/lib/pipeline";
 import { PersonaSchema } from "@/lib/schema";
+import { normaliseCompanyInput } from "@/lib/normalise";
+import { checkRateLimit, getIp } from "@/lib/ratelimit";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -36,7 +38,36 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { companyInput, persona } = parsed.data;
+  const normalised = normaliseCompanyInput(parsed.data.companyInput);
+  if (!normalised.ok) {
+    return Response.json(
+      { error: "invalid_input", code: normalised.code },
+      { status: 400 }
+    );
+  }
+
+  const ip = getIp(req.headers);
+  const rl = await checkRateLimit(ip);
+  if (!rl.ok) {
+    return Response.json(
+      {
+        error: "rate_limit",
+        retryAfterSec: rl.retryAfterSec,
+        resetAt: rl.resetAt,
+      },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(rl.retryAfterSec),
+          "X-RateLimit-Remaining": "0",
+          "X-RateLimit-Reset": String(rl.resetAt),
+        },
+      }
+    );
+  }
+
+  const { persona } = parsed.data;
+  const companyInput = normalised.value;
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({
@@ -66,15 +97,17 @@ export async function POST(req: NextRequest) {
               lp: result.lp,
               provider: result.provider,
               latencyMs: result.latencyMs,
+              rateLimit: { remaining: rl.remaining, resetAt: rl.resetAt },
             })}\n`
           )
         );
         controller.close();
       } catch (err) {
         const pipelineErr = err instanceof PipelineError ? err : null;
+        const code = pipelineErr?.code ?? "unknown";
         const errorPayload = {
           ok: false,
-          code: pipelineErr?.code ?? "unknown",
+          code,
           message: pipelineErr?.message ?? (err as Error).message,
           providerErrors: pipelineErr?.providerErrors,
         };
@@ -91,6 +124,8 @@ export async function POST(req: NextRequest) {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "no-cache, no-transform",
       "X-Accel-Buffering": "no",
+      "X-RateLimit-Remaining": String(rl.remaining),
+      "X-RateLimit-Reset": String(rl.resetAt),
     },
   });
 }

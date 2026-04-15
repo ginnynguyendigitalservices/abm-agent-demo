@@ -42,9 +42,27 @@ export function GenerateForm() {
         body: JSON.stringify({ companyInput: companyInput.trim(), persona }),
       });
 
+      if (res.status === 429) {
+        const body = await res.json().catch(() => ({}));
+        const mins = Math.ceil((body?.retryAfterSec ?? 3600) / 60);
+        toast.error("Rate limit hit — try a pre-baked example below", {
+          description: `You've used 5 demos this hour. Resets in ~${mins} min.`,
+          duration: 8000,
+        });
+        setStatus("error");
+        return;
+      }
+
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body?.error ?? `HTTP ${res.status}`);
+        const code = body?.error ?? `HTTP ${res.status}`;
+        if (code === "invalid_input") {
+          toast.error("That input doesn't look like a company URL or name");
+        } else {
+          toast.error(`Request failed: ${code}`);
+        }
+        setStatus("error");
+        return;
       }
 
       if (!res.body) throw new Error("no response body");
@@ -69,7 +87,23 @@ export function GenerateForm() {
       if (accumulated.includes(ERROR_DELIM)) {
         const errJson = accumulated.split(ERROR_DELIM)[1].trim();
         const err = JSON.parse(errJson);
-        throw new Error(err.message ?? "pipeline failed");
+        const code = err?.code ?? "unknown";
+        setStatus("error");
+        if (code === "both_providers_failed") {
+          toast.error("Both AI providers are slow right now", {
+            description:
+              "Try a pre-baked example below, or wait a minute and retry.",
+            duration: 8000,
+          });
+        } else if (code === "aborted") {
+          toast.error("Generation cancelled");
+        } else {
+          toast.error("Generation failed", {
+            description: `${code}. Try a pre-baked example or retry.`,
+            duration: 8000,
+          });
+        }
+        return;
       }
 
       if (!accumulated.includes(RESULT_DELIM)) {

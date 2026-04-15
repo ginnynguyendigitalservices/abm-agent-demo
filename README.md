@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# abm-agent-demo
 
-## Getting Started
+> The self-serve aha moment Prismic's ABM Landing Page Builder doesn't have.
 
-First, run the development server:
+Paste a company URL, get the personalised landing page Prismic's ABM Agent would ship for them plus a quantified growth brief. Live, in your browser, in about a minute.
+
+**Live:** https://ginny-nguyen-abm-demo.vercel.app
+
+Built as the portfolio artefact for Ginny Nguyen's AI Solutions Engineer application at Prismic. Replaces the cover-letter slot their application flow doesn't have.
+
+## Stack
+
+- Next.js 16 (App Router, TypeScript, Turbopack dev)
+- Tailwind CSS 4 + shadcn/ui (base-nova preset)
+- Claude Sonnet 4.6 primary with prompt caching + `web_search_20250305` tool + streaming (`@anthropic-ai/sdk`)
+- Gemini 2.5 Flash fallback with Google Search grounding (`@google/generative-ai`)
+- Zod 4 for output schema validation (two-artefact LP + growth brief)
+- Upstash Redis + `@upstash/ratelimit` for per-IP sliding window
+- Deployed on Vercel
+
+## Local dev
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.local.example .env.local
+# fill in the keys
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Purpose | Source |
+| --- | --- | --- |
+| `ANTHROPIC_API_KEY` | Sonnet 4.6 primary provider | https://console.anthropic.com/settings/keys |
+| `GEMINI_API_KEY` | Gemini 2.5 Flash fallback | https://aistudio.google.com/apikey |
+| `UPSTASH_REDIS_REST_URL` | Per-IP rate limit store | https://console.upstash.com/ |
+| `UPSTASH_REDIS_REST_TOKEN` | " | " |
+| `UPSTASH_BYPASS_IPS` | Optional comma-separated IPs exempt from rate limit | - |
 
-## Learn More
+All four (plus the optional bypass) must be set in Vercel **Production + Preview + Development**.
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+POST /api/generate  { companyInput, persona }
+  -> normaliseCompanyInput           src/lib/normalise.ts
+  -> checkRateLimit(ip) 5/hr         src/lib/ratelimit.ts
+  -> runPipeline                     src/lib/pipeline.ts
+       -> streamAnthropic            src/lib/providers/anthropic.ts
+          (Sonnet 4.6 + web_search + prompt cache + stream)
+       -> on fail: streamGemini      src/lib/providers/gemini.ts
+          (Gemini 2.5 Flash + googleSearch grounding + stream)
+       -> extractJson + LPSchema.safeParse
+  -> stream text deltas back to client with delimiters:
+       ---PROVIDER:anthropic--- / ---PROVIDER:gemini---
+       ---RESULT---<json> on success
+       ---ERROR---<json> on failure
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The client (`src/components/generate-form.tsx`) streams and parses the final delimited JSON block, renders via `src/components/lp-preview.tsx` which splits into `LandingPagePreview` + `GrowthBriefPreview` subcomponents.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push to `main` auto-deploys via Vercel. First deploy requires all 4 env vars to be set before a live generation will succeed. Upstash rate limit falls back to unlimited if the two Upstash vars are missing (useful during initial setup).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Licence
+
+Personal portfolio artefact. Not licensed for reuse.
+
+Ginny Nguyen, ginny.nguyen.digitalservices@gmail.com
