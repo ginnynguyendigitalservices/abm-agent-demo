@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export function AvatarChip({
   size = 32,
-  src = "/ginny.jpg",
+  src = "/ginny.png",
   alt = "Ginny Nguyen",
 }: {
   size?: number;
