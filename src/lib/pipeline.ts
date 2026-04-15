@@ -1,6 +1,12 @@
 import { LPSchema, type LP, type Persona } from "@/lib/schema";
 import { streamAnthropic, type ProviderChunk } from "@/lib/providers/anthropic";
 import { streamGemini } from "@/lib/providers/gemini";
+import {
+  isProviderUnavailable,
+  markProviderUnavailable,
+  classifyProviderError,
+  clearProviderUnavailable,
+} from "@/lib/provider-health";
 
 export type ProviderName = "anthropic" | "gemini";
 
@@ -95,6 +101,12 @@ export async function runPipeline({
       continue;
     }
 
+    const health = await isProviderUnavailable(provider);
+    if (health.unavailable) {
+      providerErrors[provider] = `skipped (cached: ${health.reason ?? "unavailable"})`;
+      continue;
+    }
+
     onProvider?.(provider);
     try {
       const { raw, latencyMs } = await runProvider(
@@ -128,6 +140,8 @@ export async function runPipeline({
         continue;
       }
 
+      await clearProviderUnavailable(provider);
+
       return {
         lp: validated.data,
         provider,
@@ -137,6 +151,16 @@ export async function runPipeline({
     } catch (err) {
       const e = err as Error;
       providerErrors[provider] = `${e.name}: ${e.message}`;
+
+      const classification = classifyProviderError(provider, e);
+      if (classification?.shouldCache) {
+        await markProviderUnavailable(
+          provider,
+          classification.reason,
+          classification.ttlSec
+        );
+      }
+
       if (e.name === "AbortError" && signal.aborted) {
         throw new PipelineError("aborted", "request aborted", providerErrors as Record<ProviderName, string>);
       }
