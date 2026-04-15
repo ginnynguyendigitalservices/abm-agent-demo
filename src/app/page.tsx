@@ -85,8 +85,8 @@ export default function Home() {
             </h2>
             <p className="text-base text-muted-foreground max-w-lg leading-relaxed">
               I&rsquo;m Ginny, a growth marketer who ships AI agents instead of
-              briefs. This is one of them. If it&rsquo;s interesting, let&rsquo;s
-              talk.
+              briefs. This is one of them. If you find it interesting,
+              let&rsquo;s talk.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <a
