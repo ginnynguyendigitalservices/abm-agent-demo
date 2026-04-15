@@ -81,6 +81,20 @@ function RichText({ text }: { text: string }) {
   );
 }
 
+function SquareBullet({ color = "var(--brand-amber)" }: { color?: string }) {
+  return (
+    <span
+      className="shrink-0 mt-2"
+      aria-hidden
+      style={{
+        display: "inline-block",
+        width: 6,
+        height: 6,
+        backgroundColor: color,
+      }}
+    />
+  );
+}
 function LandingPagePreview({ lp }: { lp: LandingPage }) {
   return (
     <div className="flex flex-col gap-14">
@@ -118,11 +132,9 @@ function LandingPagePreview({ lp }: { lp: LandingPage }) {
               {vp.bullets.map((b, j) => (
                 <li
                   key={j}
-                  className="text-sm text-muted-foreground leading-snug flex gap-2 items-start"
+                  className="text-sm text-muted-foreground leading-snug flex gap-2.5 items-start"
                 >
-                  <span className="text-accent shrink-0 mt-0.5" aria-hidden>
-                    →
-                  </span>
+                  <SquareBullet />
                   <span>
                     <RichText text={b} />
                   </span>
@@ -157,12 +169,12 @@ function LandingPagePreview({ lp }: { lp: LandingPage }) {
           {lp.fitSection.fitBullets.map((b, i) => (
             <li
               key={i}
-              className="rounded-lg border border-border/60 bg-background/40 px-3 py-2 text-sm leading-relaxed flex gap-2 items-start"
+              className="rounded-lg border border-border/60 bg-background/40 px-3 py-2 text-sm leading-relaxed flex gap-2.5 items-start"
             >
-              <span className="text-accent shrink-0 mt-0.5" aria-hidden>
-                ✓
+              <SquareBullet color="var(--brand-purple)" />
+              <span>
+                <RichText text={b} />
               </span>
-              <span>{b}</span>
             </li>
           ))}
         </ul>
@@ -262,11 +274,9 @@ function GrowthBriefPreview({ brief }: { brief: GrowthBrief }) {
               {block.bullets.map((b, j) => (
                 <li
                   key={j}
-                  className="text-sm text-muted-foreground leading-relaxed flex gap-2 items-start"
+                  className="text-sm text-muted-foreground leading-relaxed flex gap-2.5 items-start"
                 >
-                  <span className="text-accent shrink-0 mt-0.5" aria-hidden>
-                    →
-                  </span>
+                  <SquareBullet color="var(--brand-purple)" />
                   <span>
                     <RichText text={b} />
                   </span>
@@ -279,7 +289,7 @@ function GrowthBriefPreview({ brief }: { brief: GrowthBrief }) {
 
       <div className="rounded-lg border border-[#10b981]/30 bg-[#10b981]/5 p-4 flex flex-col gap-3">
         <span className="text-xs uppercase tracking-wider text-[#10b981] font-medium">
-          Quick wins — prioritised
+          Quick wins by priority
         </span>
         <ul className="flex flex-col gap-2">
           {brief.quickWins

@@ -42,7 +42,7 @@ export default function Home() {
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Paste a company URL. Get the personalised landing page Prismic&rsquo;s
-            ABM Agent would ship for them — plus a quantified growth brief.
+            ABM Agent would ship for them, plus a quantified growth brief.
             In your browser, in about a minute.
           </p>
         </section>
@@ -84,7 +84,7 @@ export default function Home() {
               Like what you see?
             </h2>
             <p className="text-base text-muted-foreground max-w-lg leading-relaxed">
-              I&rsquo;m Ginny — a growth marketer who ships AI agents instead of
+              I&rsquo;m Ginny, a growth marketer who ships AI agents instead of
               briefs. This is one of them. If it&rsquo;s interesting, let&rsquo;s
               talk.
             </p>

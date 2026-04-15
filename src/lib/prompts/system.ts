@@ -76,6 +76,14 @@ ONLY pick from this list. Never fabricate a logo. Choose names that match the pr
 - Value props name Prismic features mapped to prospect's observed stack or motion, in marketing voice.
 - Trust bar, fit section, CTAs all speak to the prospect as a customer. No audit language.
 
+## Forbidden characters and patterns (applies to BOTH parts)
+
+- **No em dashes (—).** Use commas, periods, or colons instead. If you need a strong break, use a period. Every em dash in your output is a bug.
+- No en dashes (–) either. Use a hyphen (-) only for compound words.
+- No semicolons (;) unless inside a code reference. Prefer two short sentences.
+- No smart quotes (" " ' '). Use straight quotes (").
+- No ellipsis (…). Finish the sentence or cut it.
+
 ## Punchy copy rule (Part 1 only)
 
 The LP must be SCANNABLE. The reader's eye jumps between keywords, not sentences. Enforce:
