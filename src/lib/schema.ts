@@ -17,8 +17,8 @@ export const LPHeroSchema = z.object({
 });
 
 export const ValuePropSchema = z.object({
-  title: z.string().min(3).max(60),
-  body: z.string().min(40).max(240),
+  title: z.string().min(3).max(50),
+  bullets: z.array(z.string().min(6).max(90)).min(2).max(3),
 });
 
 export const TrustBarSchema = z.object({
@@ -27,16 +27,33 @@ export const TrustBarSchema = z.object({
 });
 
 export const FitSectionSchema = z.object({
-  headline: z.string().min(10).max(140),
-  body: z.string().min(60).max(360),
-  fitBullets: z.array(z.string().min(10).max(200)).length(3),
+  headline: z.string().min(10).max(120),
+  body: z.string().min(30).max(180),
+  fitBullets: z.array(z.string().min(8).max(100)).length(3),
 });
 
 export const ClosingCtaSchema = z.object({
-  headline: z.string().min(10).max(160),
-  body: z.string().min(40).max(280),
+  headline: z.string().min(10).max(140),
+  body: z.string().min(20).max(160),
   ctaLabel: z.string().min(3).max(50),
 });
+
+export const PersonaSchema = z.enum([
+  "marketing",
+  "engineering",
+  "revenue",
+  "product",
+  "finance",
+]);
+export type Persona = z.infer<typeof PersonaSchema>;
+
+export const PERSONA_LABEL: Record<Persona, string> = {
+  marketing: "Marketing",
+  engineering: "Engineering",
+  revenue: "Revenue / Sales",
+  product: "Product",
+  finance: "Finance",
+};
 
 export const LandingPageSchema = z.object({
   hero: LPHeroSchema,
@@ -58,12 +75,20 @@ export const RationaleBlockSchema = z.object({
   bullets: z.array(z.string().min(5).max(320)).min(2).max(5),
 });
 
+export const PriorityLabel = z.enum(["P1", "P2", "P3"]);
+export type Priority = z.infer<typeof PriorityLabel>;
+
+export const QuickWinSchema = z.object({
+  priority: PriorityLabel,
+  text: z.string().min(20).max(260),
+});
+
 export const GrowthBriefSchema = z.object({
   opportunityTitle: z.string().min(5).max(200),
   opportunityEurPerMonth: z.number().positive().max(10_000_000),
   keyMetrics: z.array(KeyMetricSchema).min(2).max(5),
   rationaleBlocks: z.array(RationaleBlockSchema).min(2).max(4),
-  quickWin: z.string().min(50).max(800),
+  quickWins: z.array(QuickWinSchema).min(3).max(5),
 });
 
 // ---------- Top level ----------

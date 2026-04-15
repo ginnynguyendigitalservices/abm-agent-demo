@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { SYSTEM_PROMPT } from "@/lib/prompts/system";
 import { buildUserPrompt } from "@/lib/prompts/user";
 import type { ProviderChunk } from "@/lib/providers/anthropic";
+import type { Persona } from "@/lib/schema";
 
 const MODEL_ID = "gemini-2.5-flash";
 
@@ -9,9 +10,11 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? "");
 
 export async function* streamGemini({
   companyInput,
+  persona,
   signal,
 }: {
   companyInput: string;
+  persona: Persona;
   signal: AbortSignal;
 }): AsyncGenerator<ProviderChunk, void, void> {
   const model = genAI.getGenerativeModel({
@@ -24,7 +27,7 @@ export async function* streamGemini({
     contents: [
       {
         role: "user",
-        parts: [{ text: buildUserPrompt(companyInput) }],
+        parts: [{ text: buildUserPrompt(companyInput, persona) }],
       },
     ],
     generationConfig: {

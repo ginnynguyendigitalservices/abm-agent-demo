@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { z } from "zod";
 import { runPipeline, PipelineError } from "@/lib/pipeline";
+import { PersonaSchema } from "@/lib/schema";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -10,6 +11,7 @@ const InputSchema = z.object({
     .string()
     .min(1, "companyInput is required")
     .max(200, "companyInput too long"),
+  persona: PersonaSchema.default("marketing"),
 });
 
 const RESULT_DELIM = "\n---RESULT---\n";
@@ -34,7 +36,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { companyInput } = parsed.data;
+  const { companyInput, persona } = parsed.data;
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({
@@ -45,6 +47,7 @@ export async function POST(req: NextRequest) {
       try {
         const result = await runPipeline({
           companyInput,
+          persona,
           signal: abortController.signal,
           onChunk: (chunk) => {
             controller.enqueue(encoder.encode(chunk.text));

@@ -1,4 +1,4 @@
-import { LPSchema, type LP } from "@/lib/schema";
+import { LPSchema, type LP, type Persona } from "@/lib/schema";
 import { streamAnthropic, type ProviderChunk } from "@/lib/providers/anthropic";
 import { streamGemini } from "@/lib/providers/gemini";
 
@@ -43,6 +43,7 @@ function extractJson(raw: string): unknown {
 async function runProvider(
   provider: ProviderName,
   companyInput: string,
+  persona: Persona,
   onChunk: (chunk: ProviderChunk) => void,
   outerSignal: AbortSignal
 ): Promise<{ raw: string; latencyMs: number }> {
@@ -55,8 +56,8 @@ async function runProvider(
   try {
     const source =
       provider === "anthropic"
-        ? streamAnthropic({ companyInput, signal: controller.signal })
-        : streamGemini({ companyInput, signal: controller.signal });
+        ? streamAnthropic({ companyInput, persona, signal: controller.signal })
+        : streamGemini({ companyInput, persona, signal: controller.signal });
 
     for await (const chunk of source) {
       raw += chunk.text;
@@ -70,11 +71,13 @@ async function runProvider(
 
 export async function runPipeline({
   companyInput,
+  persona,
   signal,
   onChunk,
   onProvider,
 }: {
   companyInput: string;
+  persona: Persona;
   signal: AbortSignal;
   onChunk: (chunk: ProviderChunk) => void;
   onProvider?: (provider: ProviderName) => void;
@@ -97,6 +100,7 @@ export async function runPipeline({
       const { raw, latencyMs } = await runProvider(
         provider,
         companyInput,
+        persona,
         onChunk,
         signal
       );

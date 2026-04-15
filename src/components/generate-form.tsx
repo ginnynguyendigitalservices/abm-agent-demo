@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
 import { LPPreview } from "@/components/lp-preview";
-import type { LP } from "@/lib/schema";
+import { type LP, type Persona, PERSONA_LABEL } from "@/lib/schema";
+import { cn } from "@/lib/utils";
 
 const RESULT_DELIM = "\n---RESULT---\n";
 const ERROR_DELIM = "\n---ERROR---\n";
@@ -14,8 +15,11 @@ const PROVIDER_RE = /\n---PROVIDER:(anthropic|gemini)---\n/g;
 
 type Status = "idle" | "researching" | "generating" | "done" | "error";
 
+const PERSONAS: Persona[] = ["marketing", "engineering", "revenue", "product", "finance"];
+
 export function GenerateForm() {
   const [companyInput, setCompanyInput] = useState("");
+  const [persona, setPersona] = useState<Persona>("marketing");
   const [status, setStatus] = useState<Status>("idle");
   const [activeProvider, setActiveProvider] = useState<string | null>(null);
   const [lp, setLp] = useState<LP | null>(null);
@@ -35,7 +39,7 @@ export function GenerateForm() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ companyInput: companyInput.trim() }),
+        body: JSON.stringify({ companyInput: companyInput.trim(), persona }),
       });
 
       if (!res.ok) {
@@ -91,22 +95,54 @@ export function GenerateForm() {
 
   return (
     <div className="flex flex-col gap-6">
-      <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-3">
-        <Input
-          value={companyInput}
-          onChange={(e) => setCompanyInput(e.target.value)}
-          placeholder="e.g. linear.app"
-          className="h-12 text-base flex-1"
-          disabled={loading}
-          aria-label="Company URL or name"
-        />
-        <Button
-          type="submit"
-          disabled={loading}
-          className="h-12 px-8 font-medium gradient-hero text-[#0a0b14] hover:opacity-90 border-0"
-        >
-          {loading ? "Generating..." : "Generate demo"}
-        </Button>
+      <form onSubmit={onSubmit} className="flex flex-col gap-4">
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Input
+            value={companyInput}
+            onChange={(e) => setCompanyInput(e.target.value)}
+            placeholder="e.g. linear.app"
+            className="h-12 text-base flex-1"
+            disabled={loading}
+            aria-label="Company URL or name"
+          />
+          <Button
+            type="submit"
+            disabled={loading}
+            className="h-12 px-8 font-medium gradient-hero text-[#0a0b14] hover:opacity-90 border-0"
+          >
+            {loading ? "Generating..." : "Generate demo"}
+          </Button>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <span className="text-xs uppercase tracking-wider text-muted-foreground">
+            Target persona on the LP
+          </span>
+          <div role="radiogroup" aria-label="Persona" className="flex flex-wrap gap-2">
+            {PERSONAS.map((p) => {
+              const active = persona === p;
+              return (
+                <button
+                  key={p}
+                  type="button"
+                  role="radio"
+                  aria-checked={active}
+                  disabled={loading}
+                  onClick={() => setPersona(p)}
+                  className={cn(
+                    "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                    "disabled:opacity-60 disabled:cursor-not-allowed",
+                    active
+                      ? "border-accent/60 bg-accent/10 text-foreground"
+                      : "border-border bg-card/50 text-muted-foreground hover:border-accent/40 hover:text-foreground"
+                  )}
+                >
+                  {PERSONA_LABEL[p]}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </form>
 
       {loading && (
@@ -118,7 +154,7 @@ export function GenerateForm() {
             </span>
             <span>
               {status === "researching"
-                ? `Researching ${companyInput.trim()}...`
+                ? `Researching ${companyInput.trim()} for ${PERSONA_LABEL[persona]}...`
                 : `Drafting with ${activeProvider ?? "AI"}...`}
             </span>
           </div>

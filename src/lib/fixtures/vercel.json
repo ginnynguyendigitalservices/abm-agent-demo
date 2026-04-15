@@ -2,107 +2,156 @@
   "company": {
     "name": "Vercel",
     "domain": "vercel.com",
-    "industry": "Frontend Cloud Platform"
+    "industry": "Developer Platform / AI Cloud / PaaS"
   },
   "landingPage": {
     "hero": {
-      "eyebrow": "For Vercel",
-      "headline": "Vercel, deliver hyper-relevant experiences at the speed of your Edge.",
-      "subhead": "Your platform empowers the world's fastest web experiences. Now, ensure your own marketing adapts with the same agility, delivering personalized content to every enterprise target.",
-      "ctaPrimary": "See Prismic Agents in action",
-      "ctaSecondary": "Explore the Prismic for Next.js docs"
+      "eyebrow": "For Vercel's Marketing Team",
+      "headline": "Vercel, ship campaign pages as fast as you ship deployments.",
+      "subhead": "Prismic gives your marketing team full LP autonomy on the Next.js stack your engineers already own.",
+      "ctaPrimary": "See your first ABM page live in 15 min",
+      "ctaSecondary": "Read how Slice Machine works with Next.js"
     },
     "valueProps": [
       {
         "title": "Marketer-owned LP iteration",
-        "body": "Empower your marketing teams to launch, test, and iterate on landing pages independently, without needing constant developer cycles. Prismic's visual editor and Slice Machine integrate seamlessly with your Next.js components."
+        "bullets": [
+          "**50 ABM variants**/week, zero eng tickets",
+          "Visual editor on your **Next.js** components",
+          "Draft, preview, publish — **no redeploy**"
+        ]
       },
       {
-        "title": "Dynamic content at the Edge",
-        "body": "Leverage Prismic's global CDN and Prismic Agents to serve personalized content variations instantly, ensuring every visitor sees the most relevant message, just as your customers expect from Vercel."
+        "title": "ABM at Edge speed",
+        "bullets": [
+          "**Reverse-IP detection** triggers named-account pages",
+          "Prismic **ABM Agent** builds variants in minutes",
+          "Brand-consistent slices, **no custom code** per account"
+        ]
       },
       {
-        "title": "Scale ABM with precision",
-        "body": "Move beyond static pages. Automatically adapt your site's messaging, CTAs, and even imagery based on IP detection, firmographic data, or referral source, turning every visit into a tailored conversation."
+        "title": "Campaign velocity, no lock-in",
+        "bullets": [
+          "**Slice Machine** + TypeScript out of the box",
+          "Content API fits your **existing Vercel** deploy pipeline",
+          "SEO Agent keeps every LP **indexed and optimised**"
+        ]
       }
     ],
     "trustBar": {
-      "headline": "Trusted by leading enterprise and developer-focused platforms.",
+      "headline": "Trusted by 800+ product-led and enterprise teams shipping on headless stacks",
       "logos": [
         "Google",
         "Netflix",
-        "Toyota",
-        "Deliveroo",
         "Trainline",
-        "Smart"
+        "Deliveroo",
+        "Macpaw",
+        "Toyota"
       ]
     },
     "fitSection": {
-      "headline": "Built for the Next.js ecosystem you champion.",
-      "body": "You've set the standard for modern web development with Next.js and the Edge. Prismic is designed from the ground up to complement this architecture, providing a headless CMS and intelligent agents that extend your existing stack, not replace it. We speak your language, integrate with your workflows, and amplify your team's output.",
+      "headline": "Built for teams already running Next.js on Vercel",
+      "body": "Prismic's Slice Machine integrates directly into your Next.js repo — no CMS migration, no new infra.",
       "fitBullets": [
-        "Native Next.js integration for SSR, SSG, and ISR.",
-        "Component-driven development with Slices, mapping directly to your React components.",
-        "Edge-native content delivery ensuring personalized content is served with minimal latency."
+        "**Next.js** + Slice Machine — native component model",
+        "**TypeScript-typed** content, safe by default",
+        "**Vercel Preview Deployments** + Prismic draft sync"
       ]
     },
     "closingCta": {
-      "headline": "Transform your marketing site into a dynamic growth engine.",
-      "body": "Stop leaving enterprise opportunities on the table due to static content. Prismic Agents enable your team to deliver tailored experiences at scale, driving higher engagement and conversion. See how quickly you can launch your first ABM-powered page.",
-      "ctaLabel": "Request a personalized demo"
+      "headline": "See a personalised landing page generate live for your next target account.",
+      "body": "Your stack, your brand, your components — Prismic plugs in today.",
+      "ctaLabel": "Book a 15-minute demo"
     }
   },
   "growthBrief": {
-    "opportunityTitle": "Unlock significant enterprise pipeline by activating dynamic, personalized ABM on vercel.com.",
-    "opportunityEurPerMonth": 50000,
+    "opportunityTitle": "Vercel's marketing team of 14 is bottlenecked on eng for every LP — ABM + SEO motion is the highest-leverage unlock",
+    "opportunityEurPerMonth": 28000,
     "keyMetrics": [
       {
-        "label": "Estimated ARR (2025)",
-        "value": "€200M"
+        "label": "Marketing team size",
+        "value": "~14 people"
       },
       {
-        "label": "Employee Count (2026)",
-        "value": "~875"
+        "label": "ARR (mid-2025)",
+        "value": "~$200M"
       },
       {
-        "label": "Enterprise Customers",
-        "value": "OpenAI, Under Armour, Nintendo"
+        "label": "Valuation (Sept 2025)",
+        "value": "$9.3B"
       },
       {
-        "label": "Next.js Downloads",
-        "value": "200M/week"
+        "label": "Target accounts (rough)",
+        "value": "500–2,000 enterprise"
+      },
+      {
+        "label": "Estimated Prismic ACV band",
+        "value": "€25K–€50K/yr"
       }
     ],
     "rationaleBlocks": [
       {
-        "title": "The ABM Gap on Vercel.com",
+        "title": "The gap",
         "bullets": [
-          "Vercel's own marketing site shows **missed personalization opportunities** for diverse personas (e.g., enterprise vs. startup developers).",
-          "Static content on key landing pages means high-value **enterprise targets** receive generic messaging, increasing friction.",
-          "This limits the ability to **tailor value propositions** and CTAs based on firmographic data or known intent."
+          "Vercel's own marketing page touts **headless CMS integrations** (Contentful, Sanity, Sitecore) — but no Prismic-native ABM layer is in place.",
+          "A marketing team of **14 people** supporting 800+ enterprise accounts cannot execute 1:1 LP personalisation without a composable CMS agent layer.",
+          "Vercel's site lists CMS as a **plugin concern** for customers, not a solved internal capability — their own marketing pages are likely eng-gated.",
+          "The company is in active **enterprise upmarket push** (new CMO from Redis, new COO from Stripe) — ABM readiness is a board-level priority right now."
         ]
       },
       {
-        "title": "Prismic Agents as the Solution",
+        "title": "The math",
         "bullets": [
-          "Prismic's **ABM Agent** enables dynamic content delivery, allowing Vercel to serve hyper-personalized LPs to identified accounts.",
-          "Leverage **reverse-IP lookup** and CRM data to automatically adapt hero sections, value props, and case studies for specific visitors.",
-          "Empower marketing to **iterate on LPs rapidly** without developer dependency, using a Next.js-native headless CMS."
+          "Rough assumption: **500 tier-1 enterprise targets** in pipeline at any time; current LP coverage is likely 1 generic page per vertical at best.",
+          "ABM Agent at Prismic can generate **50+ named-account variants/week** — current eng-gated cadence is likely fewer than 5/month.",
+          "A 15% lift in demo bookings from personalised LPs on even **50 named accounts/quarter** at $25K ACV = ~$187K incremental ARR/quarter.",
+          "Prismic Enterprise ACV band **€25K–€50K/yr** — payback in under 6 weeks at conservative conversion assumptions."
         ]
       },
       {
-        "title": "Opportunity Sizing",
+        "title": "Why now",
         "bullets": [
-          "Assuming Vercel targets **500 enterprise accounts** annually, with a 1% conversion rate to MQL on generic LPs.",
-          "Improving this to a **3% conversion rate** with personalized ABM could yield 10 additional MQLs monthly.",
-          "At a **10% MQL-to-Opportunity** conversion and a €100k average ACV, this translates to roughly **€50,000 in new pipeline value per month**."
+          "Vercel just hired a **CMO (Keith Messick)** — new marketing leadership typically audits the entire campaign and LP infrastructure in the first 90 days.",
+          "The enterprise GTM push (WPP partnership, TISAX compliance, Fortune 500 wins) demands **account-specific landing experiences** that a 14-person team cannot hand-build.",
+          "Vercel's own **Next.js + Vercel** stack is Prismic's native integration surface — zero infra lift, fastest time-to-value of any prospect in the market.",
+          "Competitor pressure from Netlify, Cloudflare Pages means **conversion rate on inbound enterprise traffic** is a direct revenue lever."
+        ]
+      },
+      {
+        "title": "What Prismic Agents ship",
+        "bullets": [
+          "**ABM Agent**: reverse-IP detects named accounts, serves a personalised LP variant in real time — no engineer required.",
+          "**SEO Agent**: audits and regenerates thin solution/use-case pages; Vercel's /solutions/* pages are a clear target surface.",
+          "**Localization Agent**: Vercel operates globally; EN-only LP coverage leaves EMEA and APAC enterprise pipeline under-served.",
+          "**Paid Ads Agent**: matches every outbound ad creative to a dedicated post-click LP — closes the message-match gap on paid campaigns."
         ]
       }
     ],
-    "quickWin": "Implement Prismic's ABM Agent to dynamically personalize the vercel.com homepage hero section and a key enterprise solutions page for a target list of 50 high-value accounts. A/B test the personalized versions against the generic pages, measuring **click-through rates** to demo requests and **time on page** for the target audience within the first 30 days. Track the **number of qualified leads** generated from the personalized pages compared to the control group."
+    "quickWins": [
+      {
+        "priority": "P1",
+        "text": "**Book** a Prismic demo with Vercel's new CMO (Keith Messick) team within 7 days — reference their Next.js-native integration and the 90-day new-CMO audit window as the hook; **measure** meeting acceptance rate."
+      },
+      {
+        "priority": "P1",
+        "text": "**Build** a live Prismic ABM demo page at prismic.io/for/vercel using their own brand tokens and a Next.js Slice Machine setup — serve it on reverse-IP detection when vercel.com IPs hit Prismic.io; **watch** time-on-page vs. generic homepage."
+      },
+      {
+        "priority": "P2",
+        "text": "**Audit** Vercel's /solutions/* and /customers/* pages for thin content and missing keyword clusters — present the SEO Agent output as a 3-slide gap analysis in the discovery call; **track** estimated monthly organic opportunity in EUR."
+      },
+      {
+        "priority": "P2",
+        "text": "**Run** a LinkedIn Sponsored Content sequence targeting 'Marketing' + 'Growth' titles at Vercel (company-targeted) with the message 'Your Next.js stack already works with Prismic — your marketers just don't know it yet'; **measure** CTR and demo requests."
+      },
+      {
+        "priority": "P3",
+        "text": "**Propose** a Prismic + Vercel co-marketing webinar on 'ABM at Edge speed for Next.js teams' — Vercel's developer audience is Prismic's ICP; **measure** co-branded MQL volume and pipeline influenced within 60 days."
+      }
+    ]
   },
   "meta": {
-    "provider": "gemini",
-    "generatedAt": "2026-04-15T15:29:46.763Z"
+    "provider": "anthropic",
+    "generatedAt": "2026-04-15T15:58:36.762Z"
   }
 }

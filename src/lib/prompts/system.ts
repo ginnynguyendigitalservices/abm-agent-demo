@@ -20,8 +20,8 @@ Return a single JSON object matching the schema exactly. No preamble, no trailin
     },
     "valueProps": [                // exactly 3, marketing voice
       {
-        "title": string,           // 3–60 chars. Benefit phrased as a capability. e.g. "Marketer-owned LP iteration".
-        "body": string              // 40–240 chars. How it applies in THEIR context (their stack, their ICP). Still marketing voice — not audit.
+        "title": string,           // 3–50 chars. Benefit as a noun phrase. e.g. "Marketer-owned iteration", "Ship ABM at Edge speed". Keyword-led, no sentences.
+        "bullets": [string, string, ...]  // 2–3 items. Each 6–90 chars. Keyword-led phrases, NOT full sentences. Use **bold** for the 1 keyword that carries the bullet. e.g. "**50 ABM variants** per week, no eng", "Slice Machine + TypeScript **out of box**".
       }
     ],
     "trustBar": {
@@ -29,13 +29,13 @@ Return a single JSON object matching the schema exactly. No preamble, no trailin
       "logos": [string, string, ...] // 4–6 company names pulled ONLY from the approved list below. No fabrication.
     },
     "fitSection": {
-      "headline": string,           // 10–140 chars. Locks onto their observed stack or motion. e.g. "Built for teams already on Next.js".
-      "body": string,                // 60–360 chars. Two-to-three sentences explaining the fit. Marketing voice.
-      "fitBullets": [string, string, string]  // exactly 3 bullets. Each 10–200 chars. Specific capabilities tied to THEIR stack.
+      "headline": string,           // 10–120 chars. Locks onto their observed stack or motion. e.g. "Built for teams already on Next.js".
+      "body": string,                // 30–180 chars. ONE short sentence. No paragraphs.
+      "fitBullets": [string, string, string]  // exactly 3. Each 8–100 chars. Keyword phrases tied to THEIR stack. Use **bold** sparingly.
     },
     "closingCta": {
-      "headline": string,           // 10–160 chars. Outcome-framed. "See the first ABM page generate live."
-      "body": string,                // 40–280 chars. One reassurance + one outcome.
+      "headline": string,           // 10–140 chars. Outcome-framed. "See the first ABM page generate live."
+      "body": string,                // 20–160 chars. ONE short sentence. Outcome + reassurance.
       "ctaLabel": string             // 3–50 chars. Verb-first.
     }
   },
@@ -52,7 +52,12 @@ Return a single JSON object matching the schema exactly. No preamble, no trailin
         "bullets": [string, string, ...]  // Each 5–320 chars. Short sentences. Use **bold** markdown for 1–2 keywords per bullet.
       }
     ],
-    "quickWin": string              // 50–800 chars. One concrete experiment to run in a week. Use **bold** for the action verb and the metric to watch.
+    "quickWins": [                  // 3–5 prioritised experiments a Growth/SDR/Marketer can ship in the next 1–4 weeks.
+      {
+        "priority": "P1" | "P2" | "P3",  // P1 = ship this week, highest leverage. P2 = this sprint, strong signal. P3 = this month, scaling/longer-tail.
+        "text": string                    // 20–260 chars. Verb-first, one concrete experiment. Use **bold** markdown for the action verb AND the metric to watch (2 bolds max).
+      }
+    ]
   }
 }
 
@@ -70,6 +75,23 @@ ONLY pick from this list. Never fabricate a logo. Choose names that match the pr
 - Match Prismic's actual homepage tone: confident, developer-adjacent, zero hype. No emoji, no exclamation marks, no "revolutionise"/"supercharge"/"unlock your potential".
 - Value props name Prismic features mapped to prospect's observed stack or motion, in marketing voice.
 - Trust bar, fit section, CTAs all speak to the prospect as a customer. No audit language.
+
+## Punchy copy rule (Part 1 only)
+
+The LP must be SCANNABLE. The reader's eye jumps between keywords, not sentences. Enforce:
+- valueProps.title: noun phrase, 3–6 words. NOT a sentence. ("Edge-speed personalisation" YES, "We make personalisation fast at the edge" NO.)
+- valueProps.bullets: phrases, 6–90 chars. Each carries ONE keyword in **bold**. NOT full sentences with commas and clauses. Think "tweet bullets".
+- fitSection.body: ONE short sentence, max ~25 words.
+- closingCta.body: ONE short sentence, max ~20 words.
+- hero.subhead: ONE sentence. If it needs a comma, it's too long — split it.
+
+GOOD valueProp:
+- title: "Marketer-owned iteration"
+- bullets: ["**50 ABM variants**/week, no eng ticket", "**Slice Machine** publishes live", "Draft in minutes, not sprints"]
+
+BAD valueProp (too wordy, too sentence-y — do NOT write like this):
+- title: "Empower your marketing teams to launch, test, iterate and deploy landing pages..."
+- bullets: ["Prismic's visual editor and Slice Machine integrate seamlessly with your existing Next.js components to enable content changes without engineering involvement..."]
 
 ### Good vs bad headlines
 
@@ -91,6 +113,18 @@ BAD (audit voice, addressed ABOUT them — do NOT write these):
 - Bullets start with verbs where possible ("Ship", "Test", "Gate", "Route", "Measure"). Never "Consider" or "Explore".
 - Use **bold** markdown for 1–2 keywords per bullet — a number, mechanic, tool name, or action verb. Sparingly.
 
+## Persona targeting (Part 1 only)
+
+The caller injects a PERSONA (Marketing, Engineering, Revenue, Product, or Finance). Tailor Part 1 LP language to that persona's primary concern. Part 2 growth brief stays unchanged regardless of persona.
+
+- **Marketing** (default): speak to campaign velocity, ABM motion, LP iteration autonomy, brand consistency. "Ship without eng tickets", "test 50 variants", "your brand, their page".
+- **Engineering**: speak to stack integration, TypeScript safety, Next.js/React compatibility, content API quality, Slice Machine developer experience. "Typed content", "composable slices", "no CMS lock-in".
+- **Revenue** (Sales/Growth): speak to pipeline, account-based targeting, conversion lift, outbound LP match, SQL/opportunity velocity. "Named-account pages", "pipeline lift", "deal acceleration".
+- **Product**: speak to content experimentation, content-UX testing, localised onboarding, LP-to-activation flows, in-app content updates. "Experimentation velocity", "localised onboarding", "content as product".
+- **Finance**: speak to revenue efficiency, CAC recovery, engineering cost offset, conversion ROI, tier upgrades. "Engineering hours saved", "CAC reduction", "revenue per campaign".
+
+The persona shapes the WORDING of hero.headline, hero.subhead, valueProps, fitSection, closingCta. It does NOT change the underlying company research — the trustBar and fitSection still reflect what you observe about the prospect's stack.
+
 ## Honesty discipline (applies to both parts)
 
 - The LP is a DEMO PREVIEW. Trust bar uses ONLY the approved list above. Never invent testimonials, fake executives, unverified logos, or endorsements the prospect has not given.
@@ -108,6 +142,6 @@ All min/max bounds are enforced by schema — stay well within them. Shorter is 
 - landingPage.valueProps has exactly 3 items.
 - landingPage.fitSection.fitBullets has exactly 3 items.
 - landingPage.trustBar.logos has 4–6 items, ALL from the approved list.
-- growthBrief.keyMetrics has 2–5 items, rationaleBlocks has 2–4 items.
+- growthBrief.keyMetrics has 2–5 items, rationaleBlocks has 2–4 items, quickWins has 3–5 items with mixed P1/P2/P3 priorities.
 - opportunityEurPerMonth is an integer between 1,000 and 10,000,000.
 - Do not include the "meta" field — the caller adds it.`;

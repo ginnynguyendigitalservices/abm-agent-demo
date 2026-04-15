@@ -2,122 +2,156 @@
   "company": {
     "name": "Linear",
     "domain": "linear.app",
-    "industry": "B2B SaaS – Project Management & Issue Tracking"
+    "industry": "B2B SaaS — Project Management / Software Development Tools"
   },
   "landingPage": {
     "hero": {
-      "eyebrow": "For engineering-led SaaS teams",
-      "headline": "Linear, stop gating landing page iteration behind a merge request.",
-      "subhead": "Your product ships in minutes. Your marketing site shouldn't take a sprint. Prismic lets Linear's marketers own, test, and publish pages without touching your codebase.",
+      "eyebrow": "For Linear's marketing team",
+      "headline": "Linear, stop gating LP iteration behind engineering sprints.",
+      "subhead": "Prismic gives your marketing team full ownership of every campaign page — no merge requests, no waiting.",
       "ctaPrimary": "See your first ABM page in 15 min",
-      "ctaSecondary": "Read how Prismic fits PLG teams"
+      "ctaSecondary": "Read how Prismic Agents work"
     },
     "valueProps": [
       {
-        "title": "Marketer-owned page iteration",
-        "body": "Linear's engineers move fast. Prismic's Visual Builder gives your marketing team the same velocity — draft, preview, and publish landing pages independently, without filing a ticket or waiting on a deploy."
+        "title": "Marketer-owned LP iteration",
+        "bullets": [
+          "**50 ABM variants**/week, zero eng tickets",
+          "Visual editor — draft live, **publish instantly**",
+          "Brand-consistent **Slice components**, always"
+        ]
       },
       {
-        "title": "ABM pages that match your ICP precision",
-        "body": "Linear sells to high-performance software teams across verticals. Prismic's ABM Agent detects inbound company IP and serves a personalised page variant in real time — no bespoke dev work per account."
+        "title": "ABM at campaign velocity",
+        "bullets": [
+          "**Reverse-IP detection** serves named-account pages",
+          "Personalise by segment, ICP tier, or **funnel stage**",
+          "Prismic ABM Agent **auto-generates** variants per account"
+        ]
       },
       {
-        "title": "Structured content that scales with 25,000 teams",
-        "body": "Slice Machine enforces a typed content model so every new page variant, locale, or campaign inherits Linear's design system — consistent at scale, without design review bottlenecks."
+        "title": "SEO + performance, out of box",
+        "bullets": [
+          "**SEO Agent** audits and rewrites thin pages automatically",
+          "Next.js Edge delivery — **sub-100ms** TTFB globally",
+          "Structured content API, **no CMS lock-in**"
+        ]
       }
     ],
     "trustBar": {
-      "headline": "Trusted by product-led teams building at scale",
+      "headline": "Trusted by 800+ product-led SaaS and engineering-first teams",
       "logos": [
         "Deliveroo",
         "Trainline",
         "Macpaw",
-        "Arc'teryx",
-        "Smart"
+        "Google",
+        "Smart",
+        "Arc'teryx"
       ]
     },
     "fitSection": {
-      "headline": "Built for teams already running a PLG motion",
-      "body": "Linear's growth is driven by word-of-mouth and self-serve adoption — the exact motion where fast, targeted landing pages compound. Prismic slots into your existing Next.js-compatible front-end, keeping engineers out of the content loop while giving marketers a structured, type-safe authoring surface that won't break your design system.",
+      "headline": "Built for teams already on Next.js and React",
+      "body": "Linear's marketing site runs on a modern JS stack — Prismic slots in as the content layer without touching your frontend.",
       "fitBullets": [
-        "Next.js-native Slice Machine — drop Prismic into your existing stack with zero architectural change",
-        "Prismic ABM Agent serves account-specific page variants on reverse-IP detection, no dev deploy per account",
-        "Prismic SEO Agent auto-generates and maintains comparison and use-case pages targeting Jira, Asana, and Shortcut switchers"
+        "**Slice Machine** maps to your existing React components",
+        "TypeScript-first content API — **fully typed** out of the box",
+        "**GitHub-native** workflow for content + code in one PR"
       ]
     },
     "closingCta": {
-      "headline": "See a Linear-branded ABM page generate live.",
-      "body": "No redesign, no migration. We connect to your existing front-end and show you a working personalised page within one session. Your engineers stay in their sprint.",
-      "ctaLabel": "Book a 30-minute build session"
+      "headline": "See a Linear ABM page generate live — today.",
+      "body": "We'll build a working variant against your homepage in the demo, no commitment.",
+      "ctaLabel": "Book a 15-minute demo"
     }
   },
   "growthBrief": {
-    "opportunityTitle": "Linear has no ABM content layer — 25K teams and a $1.25B valuation with zero personalised landing page infrastructure",
-    "opportunityEurPerMonth": 120000,
+    "opportunityTitle": "Linear has no ABM layer and thin campaign LP coverage — marketing iteration is eng-gated, leaving ICP conversion on the table at $100M ARR scale",
+    "opportunityEurPerMonth": 18000,
     "keyMetrics": [
       {
-        "label": "Paying teams (est.)",
-        "value": "25,000+"
-      },
-      {
-        "label": "ARR (reported)",
+        "label": "ARR (est.)",
         "value": "~$100M"
       },
       {
         "label": "Employees",
-        "value": "~178"
+        "value": "~200"
+      },
+      {
+        "label": "Product teams served",
+        "value": "25,000+"
       },
       {
         "label": "Valuation",
         "value": "$1.25B"
       },
       {
-        "label": "Funding raised",
-        "value": "$134M"
+        "label": "Marketing spend history",
+        "value": "<$35K lifetime (PLG-only)"
       }
     ],
     "rationaleBlocks": [
       {
         "title": "The gap",
         "bullets": [
-          "Linear's growth is **purely PLG and word-of-mouth** — no visible ABM instrumentation, no personalised landing pages, no account-specific conversion layer.",
-          "The marketing site uses a **custom-coded, engineer-maintained** front-end; every copy or layout change requires a pull request and deploy cycle.",
-          "Competitors like Asana, Clickup, and Atlassian **run aggressive paid and ABM programs** targeting Linear's ICP — Linear has no personalised response surface.",
-          "**HubSpot** is confirmed in the stack but there is no observable CMS or structured content layer feeding personalised web experiences from it."
+          "Linear's site is a **custom-coded Next.js build** — beautiful, but marketing cannot self-serve LP changes without eng.",
+          "No visible **ABM instrumentation**: one generic homepage serves all ICPs (devs, PMs, CTOs, enterprise buyers).",
+          "**Zero localised landing pages** detected for non-EN markets despite a distributed team spanning North America and Europe.",
+          "Paid and outbound campaigns point to the generic homepage — no **dedicated campaign LP** layer observed."
         ]
       },
       {
         "title": "The math",
         "bullets": [
-          "Linear targets software teams at companies with 10–500 engineers — a segment where **ABM conversion lifts of 20–40%** on inbound traffic are well-documented.",
-          "Rough estimate: if **5% of monthly inbound visits** (conservative for a $100M ARR PLG product) convert at even a marginal uplift from personalised pages, incremental ARR is material.",
-          "Prismic Enterprise ACV sits in the **€60K–€180K range** for teams at this scale and content volume; mid-point assumption used for opportunity figure.",
-          "Opportunity sized at **€120K/month** in incremental pipeline value Linear could attribute to ABM-assisted conversions — rough, based on observed traffic tier and deal size band."
+          "Roughly **25,000 teams** on platform; even 0.1% incremental tier-upgrade lift from personalised ABM LPs = ~25 accounts/month.",
+          "Average enterprise ACV rough estimate **~$8–15K/yr** (seat-based Plus/Enterprise tiers at ~$15–20/seat × 50–100 seats).",
+          "25 incremental accounts × **€600 avg MRR** = ~**€15,000/month** conservatively; scale to 40 accounts with Localization Agent = ~€24K/mo.",
+          "Prismic platform cost at this scale: **~€1,500–3,000/mo** — strong ROI multiple on a single ABM cohort."
         ]
       },
       {
         "title": "What Prismic Agents ship",
         "bullets": [
-          "**ABM Agent** — reverse-IP detection triggers a company-specific hero, logo, and proof point without a new deploy; targets named accounts from Linear's outbound list.",
-          "**SEO Agent** — generates and maintains programmatic comparison pages (e.g. 'Linear vs Jira for fintech teams') capturing high-intent switcher queries Linear currently misses.",
-          "**Localization Agent** — Linear's Tokyo launch is live in the product UI; the marketing site has no localised landing pages for JP, DE, or FR markets, leaving enterprise pipeline on the table.",
-          "**Paid Ads Agent** — syncs page variants to paid campaigns, removing the eng bottleneck on post-click landing page iteration for any future paid investment."
+          "**ABM Agent** generates named-account pages from reverse-IP detection — no eng sprint per variant.",
+          "**SEO Agent** identifies thin solution/comparison pages (e.g. 'Linear vs Jira') and rewrites for search intent at scale.",
+          "**Localization Agent** spins regional variants (DE, FR, JP) for Linear's European and APAC expansion segments.",
+          "**Paid Ads Agent** syncs LP copy to ad creative — removes the message-match gap burning Linear's (currently minimal) paid budget."
         ]
       },
       {
         "title": "Why now",
         "bullets": [
-          "Linear closed an **$82M Series C in June 2025** — growth mode is on, headcount growing, marketing investment expected to scale.",
-          "Atlassian and Clickup are **increasing paid spend** against Linear's ICP; without a personalised content layer, Linear's inbound conversion rate is structurally capped.",
-          "Linear's **Tokyo expansion** signals intent to localise — Prismic Localization Agent is the fastest path from product locale to full marketing-site localisation.",
-          "The engineering team is small (~178 people total); **removing marketing's dependency on eng** for web content is an immediate operational win."
+          "Linear hit **$100M ARR** and is moving upmarket toward enterprise — ABM motion is the natural next growth lever.",
+          "Competitor Atlassian runs **hundreds of ABM LP variants**; Linear's single-page approach is a moat risk as it scales.",
+          "Team grew from ~100 to **~200 employees** in under 18 months — marketing headcount is expanding but tooling hasn't kept pace.",
+          "**$134M raised**, $1.25B valuation — board pressure to show repeatable demand-gen beyond PLG word-of-mouth is real."
         ]
       }
     ],
-    "quickWin": "**Build** one Prismic-powered ABM page targeting a named enterprise account segment (e.g. fintech companies 200–500 engineers) and **measure** demo-request conversion rate against the current generic homepage CTA over a two-week window. Use Linear's existing HubSpot data to seed the account list. Expected signal: 15–30% lift in demo requests from that segment within the test period."
+    "quickWins": [
+      {
+        "priority": "P1",
+        "text": "**Build** a single ABM variant targeting 'CTO at Series B SaaS' via reverse-IP and **measure** demo-request CVR lift vs. the generic homepage within 1 week."
+      },
+      {
+        "priority": "P1",
+        "text": "**Audit** the top 5 'Linear vs Jira / Asana / Monday' pages with Prismic's SEO Agent and **track** organic ranking movement on head comparison keywords within 2 weeks."
+      },
+      {
+        "priority": "P2",
+        "text": "**Ship** a German-language LP variant for the DACH segment using Localization Agent and **measure** trial signup rate against the EN baseline for EU visitors."
+      },
+      {
+        "priority": "P2",
+        "text": "**Gate** a Prismic-powered solution page for 'Enterprise PM teams' behind a Clearbit/HubSpot enrichment trigger and **report** MQL-to-SQL velocity change over one sprint."
+      },
+      {
+        "priority": "P3",
+        "text": "**Route** all outbound LinkedIn and Google paid traffic to message-matched Prismic LPs (via Paid Ads Agent) and **measure** 30-day CAC reduction vs. current homepage-destination campaigns."
+      }
+    ]
   },
   "meta": {
     "provider": "anthropic",
-    "generatedAt": "2026-04-15T15:29:24.417Z"
+    "generatedAt": "2026-04-15T15:58:31.787Z"
   }
 }

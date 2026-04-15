@@ -1,7 +1,61 @@
 "use client";
 
 import type { LP, LandingPage, GrowthBrief } from "@/lib/schema";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+
+const LOGO_DOMAIN: Record<string, string> = {
+  deliveroo: "deliveroo.com",
+  "arc'teryx": "arcteryx.com",
+  arcteryx: "arcteryx.com",
+  trainline: "thetrainline.com",
+  macpaw: "macpaw.com",
+  google: "google.com",
+  netflix: "netflix.com",
+  "eli lilly": "lilly.com",
+  lilly: "lilly.com",
+  "lowe's": "lowes.com",
+  lowes: "lowes.com",
+  healios: "healios.co.uk",
+  castore: "castore.com",
+  toyota: "toyota.com",
+  smart: "smart.com",
+};
+
+function domainForLogo(name: string): string | null {
+  const key = name.trim().toLowerCase();
+  return LOGO_DOMAIN[key] ?? null;
+}
+
+function LogoChip({ name }: { name: string }) {
+  const [failed, setFailed] = useState(false);
+  const domain = domainForLogo(name);
+
+  if (!domain || failed) {
+    return (
+      <span className="inline-flex items-center rounded-md border border-border bg-card/40 px-3 py-2 text-xs font-semibold tracking-wider uppercase text-muted-foreground min-h-[40px]">
+        {name}
+      </span>
+    );
+  }
+
+  return (
+    <span className="inline-flex items-center justify-center min-h-[40px] min-w-[100px] px-3">
+      <img
+        src={`https://logo.clearbit.com/${domain}?size=120`}
+        alt={name}
+        loading="lazy"
+        onError={() => setFailed(true)}
+        style={{
+          height: 28,
+          width: "auto",
+          maxWidth: 120,
+          objectFit: "contain",
+          filter: "brightness(0) invert(1) opacity(0.85)",
+        }}
+      />
+    </span>
+  );
+}
 
 function formatEur(n: number): string {
   if (n >= 1_000_000) return `€${(n / 1_000_000).toFixed(1)}M`;
@@ -60,25 +114,32 @@ function LandingPagePreview({ lp }: { lp: LandingPage }) {
               0{i + 1}
             </span>
             <h3 className="text-base font-semibold leading-snug">{vp.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {vp.body}
-            </p>
+            <ul className="flex flex-col gap-1.5">
+              {vp.bullets.map((b, j) => (
+                <li
+                  key={j}
+                  className="text-sm text-muted-foreground leading-snug flex gap-2 items-start"
+                >
+                  <span className="text-accent shrink-0 mt-0.5" aria-hidden>
+                    →
+                  </span>
+                  <span>
+                    <RichText text={b} />
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
 
-      <div className="flex flex-col gap-4 items-center text-center">
+      <div className="flex flex-col gap-5 items-center text-center">
         <span className="text-xs uppercase tracking-widest text-muted-foreground">
           {lp.trustBar.headline}
         </span>
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap gap-x-8 gap-y-4 justify-center items-center">
           {lp.trustBar.logos.map((logo, i) => (
-            <span
-              key={i}
-              className="rounded-full border border-border bg-card/40 px-3 py-1.5 text-xs font-semibold tracking-wider uppercase text-muted-foreground"
-            >
-              {logo}
-            </span>
+            <LogoChip key={i} name={logo} />
           ))}
         </div>
       </div>
@@ -216,13 +277,43 @@ function GrowthBriefPreview({ brief }: { brief: GrowthBrief }) {
         ))}
       </div>
 
-      <div className="rounded-lg border border-[#10b981]/30 bg-[#10b981]/5 p-4 flex flex-col gap-2">
+      <div className="rounded-lg border border-[#10b981]/30 bg-[#10b981]/5 p-4 flex flex-col gap-3">
         <span className="text-xs uppercase tracking-wider text-[#10b981] font-medium">
-          Quick win — ship this week
+          Quick wins — prioritised
         </span>
-        <p className="text-sm leading-relaxed">
-          <RichText text={brief.quickWin} />
-        </p>
+        <ul className="flex flex-col gap-2">
+          {brief.quickWins
+            .slice()
+            .sort((a, b) => a.priority.localeCompare(b.priority))
+            .map((qw, i) => {
+              const color =
+                qw.priority === "P1"
+                  ? "#f59e0b"
+                  : qw.priority === "P2"
+                    ? "#8b5cf6"
+                    : "#10b981";
+              return (
+                <li
+                  key={i}
+                  className="text-sm leading-relaxed flex gap-3 items-start"
+                >
+                  <span
+                    className="shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold tracking-wider border"
+                    style={{
+                      color,
+                      borderColor: `${color}66`,
+                      backgroundColor: `${color}14`,
+                    }}
+                  >
+                    {qw.priority}
+                  </span>
+                  <span className="text-foreground/90">
+                    <RichText text={qw.text} />
+                  </span>
+                </li>
+              );
+            })}
+        </ul>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { SYSTEM_PROMPT } from "@/lib/prompts/system";
 import { buildUserPrompt } from "@/lib/prompts/user";
+import type { Persona } from "@/lib/schema";
 
 const MODEL_ID = "claude-sonnet-4-6";
 
@@ -15,9 +16,11 @@ export interface ProviderChunk {
 
 export async function* streamAnthropic({
   companyInput,
+  persona,
   signal,
 }: {
   companyInput: string;
+  persona: Persona;
   signal: AbortSignal;
 }): AsyncGenerator<ProviderChunk, void, void> {
   const stream = client.messages.stream(
@@ -34,7 +37,7 @@ export async function* streamAnthropic({
       messages: [
         {
           role: "user",
-          content: buildUserPrompt(companyInput),
+          content: buildUserPrompt(companyInput, persona),
         },
       ],
       tools: [
