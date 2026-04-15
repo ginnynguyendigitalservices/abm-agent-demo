@@ -95,13 +95,13 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="rounded-full gradient-hero text-[#0a0b14] px-6 py-3 text-sm font-semibold"
               >
-                Reach out on LinkedIn
+                Reach out to me on LinkedIn
               </a>
               <a
                 href="mailto:ginny.nguyen.digitalservices@gmail.com"
                 className="rounded-full border border-border bg-card/50 text-foreground px-6 py-3 text-sm font-medium hover:border-accent/40"
               >
-                Send an email
+                Send me an email
               </a>
             </div>
           </div>
