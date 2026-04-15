@@ -2,124 +2,107 @@
   "company": {
     "name": "Vercel",
     "domain": "vercel.com",
-    "industry": "Developer Tools / Frontend Cloud / PaaS"
+    "industry": "Frontend Cloud Platform"
   },
-  "hero": {
-    "headline": "Vercel ships infrastructure fast. Its marketing pages don't keep up.",
-    "subhead": "A personalised LP engine would let Vercel's 37-person sales team run account-specific plays at the same velocity their platform deploys code.",
-    "painHook": "Vercel's own site is a single static hero with no visible ABM instrumentation, no localised landing pages for its EU/APAC enterprise push, and no personalised routes for the Netlify, AWS, or Cloudflare switcher segments it is actively winning."
-  },
-  "sections": [
-    {
-      "title": "Vercel's Stack: Fast to Deploy, Slow to Personalise",
-      "body": "Vercel runs its own Next.js stack on its own platform — a credible dogfooding signal, but also a constraint. The marketing site shows no visible CMS layer surfaced to non-engineers, no headless content API, and no personalisation middleware at the edge. With only 14 people in marketing supporting a $200M ARR motion and 37 quota-carrying reps, every page that requires an engineering deploy to update is a bottleneck that slows pipeline.",
-      "tactics": [
-        "Audit which vercel.com landing pages require a code deploy to update copy — those are your first Prismic migration targets.",
-        "Map the existing Next.js routing to Prismic's Slice Machine so marketing can own LP variants without touching the repo.",
-        "Instrument **Segment or RudderStack** on /pricing and /enterprise to capture firmographic signals before a rep touches an account.",
-        "Route inbound traffic from Netlify.com, AWS.amazon.com, and Cloudflare.com referrers to a dedicated **switcher LP** with a migration-cost calculator.",
-        "Build a **preview-environment workflow** in Prismic so the 14-person marketing team can iterate and QA LPs inside Vercel's own preview URLs."
-      ]
+  "landingPage": {
+    "hero": {
+      "eyebrow": "For Vercel",
+      "headline": "Vercel, deliver hyper-relevant experiences at the speed of your Edge.",
+      "subhead": "Your platform empowers the world's fastest web experiences. Now, ensure your own marketing adapts with the same agility, delivering personalized content to every enterprise target.",
+      "ctaPrimary": "See Prismic Agents in action",
+      "ctaSecondary": "Explore the Prismic for Next.js docs"
     },
-    {
-      "title": "Vercel's Positioning: Developer-First, But the Buyer Has Changed",
-      "body": "Vercel's homepage speaks to individual developers and small teams. The enterprise motion — compliance, SSO, multi-region, 99.99% SLA — is buried in /docs and /pricing. With enterprise ACV averaging roughly €55K based on market spend data, and Teams/Enterprise already representing 50%+ of v0 revenue, the homepage is optimised for the wrong buyer. The WPP partnership and TISAX AL2 compliance signal that regulated-industry and agency enterprise is the actual growth vector.",
-      "tactics": [
-        "Swap the homepage hero variant for visitors from Fortune-2000 IP ranges to lead with the **Forrester 264% ROI** proof point, not the developer workflow.",
-        "Build a dedicated **/enterprise/agencies** LP targeting WPP, Publicis, and Dentsu accounts — reference the WPP pilot's 25% faster digital production result.",
-        "Test a **TISAX/automotive vertical LP** gated behind a Clearbit firmographic filter for automotive and manufacturing IP ranges.",
-        "Reposition the /security page as a sales asset, not a doc page — add a one-click **audit log and SOC2 demo request** CTA visible to enterprise-tier visitors.",
-        "Run a **message test** on /pricing: split 'From early-stage startups to growing enterprises' against a CFO-facing ROI frame tied to developer hour recovery."
-      ]
-    },
-    {
-      "title": "The Growth Gap: No Localised Enterprise Pages for a Global Revenue Push",
-      "body": "Vercel's enterprise revenue is scaling fast — $200M ARR, $9.3B valuation, Series F closed in late 2025. Yet vercel.com has no localised landing pages in German, French, Japanese, or Korean, despite enterprise wins in regulated EU and APAC markets and TISAX compliance specifically targeting the German automotive sector. A PLG company pushing upmarket with a 37-rep sales team and no localised ABM pages is leaving conversion on the table at every non-English enterprise touch.",
-      "tactics": [
-        "Ship **German and French /enterprise** LP variants using Prismic's Localization Agent — start with the TISAX compliance angle for automotive accounts.",
-        "Build a **Japan-specific LP** anchored to the Next.js ecosystem's dominance with Japanese dev teams — Prismic auto-translates the Slice content, devs never touch it.",
-        "Gate a **'Migration from Netlify' LP** in EN/DE/FR with a cost-comparison tool that surfaces the bandwidth overage math Netlify customers fear most.",
-        "Measure **SQL conversion rate delta** between localised vs. English LPs over a 6-week window — use Vercel's own Analytics to instrument it.",
-        "Run a **LinkedIn ABM campaign** targeting CTO and VP Engineering at 500–5000-employee companies in DACH and Benelux, driving to the localised LP, not the homepage."
-      ]
-    }
-  ],
-  "ctaBlock": {
-    "title": "What Prismic Agents Ship for Vercel in Week 1",
-    "bullets": [
-      "The **ABM Agent** generates personalised LP variants for Vercel's top 50 named accounts — each one pulls the account's known stack (Netlify, AWS, Salesforce Commerce Cloud) and surfaces the relevant migration proof point and cost delta, without an engineering deploy.",
-      "The **Localization Agent** produces EN/DE/FR/JA versions of the /enterprise page in a single workflow — Vercel's 14-person marketing team owns updates in Prismic's visual editor; Next.js renders them at the edge exactly as it does today.",
-      "The **SEO Agent** audits Vercel's existing /blog and /docs content for commercial intent gaps — it identifies which Next.js framework comparison queries (vs. Remix, Nuxt, Astro) are unowned and queues Slice-based LP drafts the marketing team can publish without a sprint ticket."
+    "valueProps": [
+      {
+        "title": "Marketer-owned LP iteration",
+        "body": "Empower your marketing teams to launch, test, and iterate on landing pages independently, without needing constant developer cycles. Prismic's visual editor and Slice Machine integrate seamlessly with your Next.js components."
+      },
+      {
+        "title": "Dynamic content at the Edge",
+        "body": "Leverage Prismic's global CDN and Prismic Agents to serve personalized content variations instantly, ensuring every visitor sees the most relevant message, just as your customers expect from Vercel."
+      },
+      {
+        "title": "Scale ABM with precision",
+        "body": "Move beyond static pages. Automatically adapt your site's messaging, CTAs, and even imagery based on IP detection, firmographic data, or referral source, turning every visit into a tailored conversation."
+      }
     ],
-    "ctaLabel": "See Vercel's ABM LP live in Prismic"
+    "trustBar": {
+      "headline": "Trusted by leading enterprise and developer-focused platforms.",
+      "logos": [
+        "Google",
+        "Netflix",
+        "Toyota",
+        "Deliveroo",
+        "Trainline",
+        "Smart"
+      ]
+    },
+    "fitSection": {
+      "headline": "Built for the Next.js ecosystem you champion.",
+      "body": "You've set the standard for modern web development with Next.js and the Edge. Prismic is designed from the ground up to complement this architecture, providing a headless CMS and intelligent agents that extend your existing stack, not replace it. We speak your language, integrate with your workflows, and amplify your team's output.",
+      "fitBullets": [
+        "Native Next.js integration for SSR, SSG, and ISR.",
+        "Component-driven development with Slices, mapping directly to your React components.",
+        "Edge-native content delivery ensuring personalized content is served with minimal latency."
+      ]
+    },
+    "closingCta": {
+      "headline": "Transform your marketing site into a dynamic growth engine.",
+      "body": "Stop leaving enterprise opportunities on the table due to static content. Prismic Agents enable your team to deliver tailored experiences at scale, driving higher engagement and conversion. See how quickly you can launch your first ABM-powered page.",
+      "ctaLabel": "Request a personalized demo"
+    }
   },
-  "brief": {
-    "opportunityTitle": "Localised enterprise ABM LP program targeting DACH, Benelux, and APAC switcher accounts",
-    "opportunityEurPerMonth": 185000,
+  "growthBrief": {
+    "opportunityTitle": "Unlock significant enterprise pipeline by activating dynamic, personalized ABM on vercel.com.",
+    "opportunityEurPerMonth": 50000,
     "keyMetrics": [
       {
-        "label": "Enterprise ACV (market avg)",
-        "value": "~€55K/yr"
+        "label": "Estimated ARR (2025)",
+        "value": "€200M"
       },
       {
-        "label": "Quota-carrying reps",
-        "value": "37"
+        "label": "Employee Count (2026)",
+        "value": "~875"
       },
       {
-        "label": "Marketing headcount",
-        "value": "14"
+        "label": "Enterprise Customers",
+        "value": "OpenAI, Under Armour, Nintendo"
       },
       {
-        "label": "Current ARR",
-        "value": "~€185M"
-      },
-      {
-        "label": "Localised LP coverage",
-        "value": "0 markets"
+        "label": "Next.js Downloads",
+        "value": "200M/week"
       }
     ],
     "rationaleBlocks": [
       {
-        "title": "The math",
+        "title": "The ABM Gap on Vercel.com",
         "bullets": [
-          "Vercel has **37 quota-carrying reps** and 14 marketers — roughly 1 marketer per 2.6 reps, a ratio that makes personalised LP production the first constraint.",
-          "Enterprise ACV sits at roughly **€55K/year** based on observed spend data (SpendHound: enterprise avg $60,744/yr).",
-          "Winning **3–4 additional enterprise accounts per month** via localised ABM LPs is directionally plausible given existing TISAX compliance and the WPP partnership as proof points.",
-          "3 net-new enterprise accounts/month × **€55K ACV ÷ 12** = ~€14K incremental MRR per account cohort; at steady state across a quarter that reaches ~€185K/month."
+          "Vercel's own marketing site shows **missed personalization opportunities** for diverse personas (e.g., enterprise vs. startup developers).",
+          "Static content on key landing pages means high-value **enterprise targets** receive generic messaging, increasing friction.",
+          "This limits the ability to **tailor value propositions** and CTAs based on firmographic data or known intent."
         ]
       },
       {
-        "title": "What Prismic Agents ship",
+        "title": "Prismic Agents as the Solution",
         "bullets": [
-          "**ABM Agent** generates account-specific LPs for named targets — no engineering sprint, no deploy queue.",
-          "**Localization Agent** covers DE, FR, JA, KO in one workflow; Vercel's edge network serves them with zero latency penalty.",
-          "**SEO Agent** fills the commercial-intent gap on Next.js vs. competitor queries — unowned terms that currently route to Netlify or AWS docs.",
-          "Marketing team goes from **1 LP per sprint** to 10+ per week without headcount addition."
+          "Prismic's **ABM Agent** enables dynamic content delivery, allowing Vercel to serve hyper-personalized LPs to identified accounts.",
+          "Leverage **reverse-IP lookup** and CRM data to automatically adapt hero sections, value props, and case studies for specific visitors.",
+          "Empower marketing to **iterate on LPs rapidly** without developer dependency, using a Next.js-native headless CMS."
         ]
       },
       {
-        "title": "Assumptions",
+        "title": "Opportunity Sizing",
         "bullets": [
-          "Enterprise ACV sourced from SpendHound observed transaction data (~$60K); treated as roughly **€55K** at current FX.",
-          "Incremental accounts modelled conservatively at **3/month** — Vercel closed 82% YoY revenue growth, so the pipeline exists.",
-          "Localisation lift assumes a **15–25% conversion improvement** on non-English enterprise pages, consistent with typical B2B localisation benchmarks.",
-          "No assumption on self-serve PLG uplift — that is additive upside, not included in the model."
-        ]
-      },
-      {
-        "title": "Why now",
-        "bullets": [
-          "Vercel just closed a **$300M Series F** and is actively pushing upmarket into regulated EU and APAC enterprise — the GTM motion is funded.",
-          "TISAX AL2 compliance is live but has **no localised landing page** to convert the automotive accounts it was designed to win.",
-          "The WPP partnership proves agency enterprise is a real segment — it has **no dedicated LP** either.",
-          "Competitors (Netlify, Cloudflare Pages) are not localised at the enterprise tier — the window to own that position is open."
+          "Assuming Vercel targets **500 enterprise accounts** annually, with a 1% conversion rate to MQL on generic LPs.",
+          "Improving this to a **3% conversion rate** with personalized ABM could yield 10 additional MQLs monthly.",
+          "At a **10% MQL-to-Opportunity** conversion and a €100k average ACV, this translates to roughly **€50,000 in new pipeline value per month**."
         ]
       }
     ],
-    "quickWin": "**Build a single German-language /enterprise/de LP** in Prismic targeting DACH CTO and VP Engineering personas, anchored to the TISAX AL2 compliance credential and the Forrester 264% ROI figure. Route LinkedIn ABM traffic from automotive and manufacturing accounts in Germany, Austria, and Switzerland to that URL. **Measure SQL conversion rate** against the English /enterprise page over 4 weeks. Expected lift: 15–25% on a segment Vercel has already qualified with compliance work but not yet converted with localised messaging."
+    "quickWin": "Implement Prismic's ABM Agent to dynamically personalize the vercel.com homepage hero section and a key enterprise solutions page for a target list of 50 high-value accounts. A/B test the personalized versions against the generic pages, measuring **click-through rates** to demo requests and **time on page** for the target audience within the first 30 days. Track the **number of qualified leads** generated from the personalized pages compared to the control group."
   },
   "meta": {
-    "provider": "anthropic",
-    "generatedAt": "2026-04-15T15:05:45.551Z"
+    "provider": "gemini",
+    "generatedAt": "2026-04-15T15:29:46.763Z"
   }
 }

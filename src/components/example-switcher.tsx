@@ -8,8 +8,8 @@ import vercelFixture from "@/lib/fixtures/vercel.json";
 import { cn } from "@/lib/utils";
 
 const EXAMPLES = [
-  { key: "linear", label: "Linear", domain: "linear.app", lp: linearFixture as LP },
-  { key: "vercel", label: "Vercel", domain: "vercel.com", lp: vercelFixture as LP },
+  { key: "linear", label: "Linear", domain: "linear.app", lp: linearFixture as unknown as LP },
+  { key: "vercel", label: "Vercel", domain: "vercel.com", lp: vercelFixture as unknown as LP },
 ] as const;
 
 type ExampleKey = (typeof EXAMPLES)[number]["key"];
